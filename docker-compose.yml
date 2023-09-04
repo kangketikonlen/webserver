@@ -1,0 +1,54 @@
+version: '3'
+services:
+  mysql:
+    container_name: database-mariadb
+    image: 'mariadb:10.5.9'
+    command: '--max_allowed_packet=256M'
+    volumes:
+      - './data/mariadb:/var/lib/mysql:delegated'
+    networks:
+      - default
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: '${MYSQL_ROOT_PASSWORD}'
+      MYSQL_USER: '${MYSQL_USER}'
+      MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
+      TZ: "Asia/Jakarta"
+    restart: always
+  mongodb:
+    container_name: database-mongodb
+    image: 'mongo:6.0.3'
+    networks:
+      - default
+    ports:
+      - '27017:27017'
+    volumes:
+      - './data/mongodb:/data/db'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: '${MONGO_INITDB_ROOT_USERNAME}'
+      MONGO_INITDB_ROOT_PASSWORD: '${MONGO_INITDB_ROOT_PASSWORD}'
+    restart: always
+  litespeed:
+    container_name: webserver-openlitespeed
+    platform: linux/amd64
+    image: 'litespeedtech/openlitespeed:1.7.16-lsphp74'
+    env_file:
+      - .env
+    volumes:
+      - './lsws/conf:/usr/local/lsws/conf'
+      - './lsws/admin-conf:/usr/local/lsws/admin/conf'
+      - './sites:/var/www/vhosts/'
+      - './logs:/usr/local/lsws/logs/'
+    networks:
+      - default
+    ports:
+      - '80:80'
+      - '7080:7080'
+    environment:
+      TZ: '${TimeZone}'
+    restart: always
+networks:
+  default:
+    name: webserver-network
+    driver: bridge

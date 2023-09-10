@@ -16,19 +16,6 @@ services:
       MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
       TZ: "Asia/Jakarta"
     restart: always
-  mongodb:
-    container_name: database-mongodb
-    image: 'mongo:6.0.3'
-    networks:
-      - default
-    ports:
-      - '27017:27017'
-    volumes:
-      - './data/mongodb:/data/db'
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: '${MONGO_INITDB_ROOT_USERNAME}'
-      MONGO_INITDB_ROOT_PASSWORD: '${MONGO_INITDB_ROOT_PASSWORD}'
-    restart: always
   litespeed:
     container_name: webserver-openlitespeed
     platform: linux/amd64

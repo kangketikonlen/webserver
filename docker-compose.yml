@@ -5,7 +5,7 @@ services:
     image: 'mariadb:10.5.9'
     command: '--max_allowed_packet=256M'
     volumes:
-      - './data/mariadb:/var/lib/mysql:delegated'
+      - './data/mariadb:/var/lib/mysql'
     networks:
       - default
     ports:

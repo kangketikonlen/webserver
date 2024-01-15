@@ -1,7 +1,7 @@
 version: '3'
 services:
   mariadb:
-    container_name: database-main
+    container_name: database
     image: 'mariadb:10.5.9'
     command: '--max_allowed_packet=256M'
     networks:
@@ -17,7 +17,7 @@ services:
       TZ: '${TimeZone}'
     restart: always
   litespeed:
-    container_name: webserver-main
+    container_name: webserver
     platform: linux/amd64
     image: 'litespeedtech/openlitespeed:1.7.16-lsphp74'
     volumes:
@@ -36,5 +36,5 @@ services:
     restart: always
 networks:
   default:
-    name: network-main
+    name: network
     driver: bridge

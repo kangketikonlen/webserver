@@ -36,5 +36,5 @@ services:
     restart: always
 networks:
   default:
-    name: network
+    name: server
     driver: bridge

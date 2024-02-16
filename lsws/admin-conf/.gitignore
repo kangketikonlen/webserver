@@ -1,3 +1,5 @@
 *
 !.gitignore
 !admin_config.conf
+!server.crt
+!server.key

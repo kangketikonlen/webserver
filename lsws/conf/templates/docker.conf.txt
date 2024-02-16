@@ -1,7 +1,7 @@
+vhroot /var/www/vhosts/$VH_NAME/
 configfile $SERVER_ROOT/conf/vhosts/$VH_NAME/vhconf.conf
 allowsymbollink 1
 enablescript 1
-vhroot /var/www/vhosts/$VH_NAME/
 restrained 1
 setuidmode 2
 

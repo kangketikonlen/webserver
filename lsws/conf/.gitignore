@@ -1,0 +1,5 @@
+*
+!.gitignore
+!templates
+!httpd_config.conf
+!mime.properties

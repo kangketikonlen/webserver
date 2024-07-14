@@ -1,4 +1,3 @@
-version: '3'
 services:
   mariadb:
     container_name: database
@@ -34,6 +33,19 @@ services:
     environment:
       TZ: '${TimeZone}'
     restart: always
+  redis:
+    container_name: redis
+    image: redis:alpine
+    command: redis-server --appendonly yes
+    networks:
+        - default
+    ports:
+        - "6379:6379"
+    volumes:
+        - './data/redis:/data'
+    restart: always
+    environment:
+        - REDIS_REPLICATION_MODE=master
 networks:
   default:
     name: server

@@ -1,5 +1,5 @@
 services:
-  mariadb:
+  database:
     container_name: database
     image: 'mariadb:10.5.9'
     command: '--max_allowed_packet=256M'
@@ -15,7 +15,7 @@ services:
       MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
       TZ: '${TimeZone}'
     restart: always
-  litespeed:
+  webserver:
     container_name: webserver
     platform: linux/amd64
     image: 'litespeedtech/openlitespeed:1.7.16-lsphp74'
@@ -33,19 +33,6 @@ services:
     environment:
       TZ: '${TimeZone}'
     restart: always
-  redis:
-    container_name: redis
-    image: redis:alpine
-    command: redis-server --appendonly yes
-    networks:
-        - default
-    ports:
-        - "6379:6379"
-    volumes:
-        - './data/redis:/data'
-    restart: always
-    environment:
-        - REDIS_REPLICATION_MODE=master
 networks:
   default:
     name: server

@@ -1,0 +1,26 @@
+[mysqld]
+sql_mode = NO_ENGINE_SUBSTITUTION
+# Reduce to 4GB (50% of RAM)
+innodb_buffer_pool_size = 4G
+# For 8GB RAM, better performance with multiple instances
+innodb_buffer_pool_instances = 4
+# Increase chunk size (default 128M is fine)
+# innodb_buffer_pool_chunk_size = 128M
+# Better to keep these on for production
+innodb_buffer_pool_load_at_startup = ON
+innodb_buffer_pool_dump_at_shutdown = ON
+# Adjust log buffer (16MB is fine for most workloads)
+innodb_log_buffer_size = 16M
+# Consider increasing log file size if you have many writes
+innodb_log_file_size = 512M
+# If using Aria tables
+aria_pagecache_buffer_size = 64M  # Reduce from 128M if not heavily using Aria
+aria_sort_buffer_size = 64M       # Reduce from 256M
+tmp_table_size = 32M
+max_heap_table_size = 32M
+# Reduce per-connection memory usage
+join_buffer_size = 128K
+sort_buffer_size = 256K
+read_buffer_size = 128K
+read_rnd_buffer_size = 256K
+key_buffer_size = 64M  # Only if using MyISAM tables

@@ -16,6 +16,16 @@ services:
       MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
       TZ: '${TimeZone}'
     restart: always
+  redis:
+    container_name: redis
+    image: 'redis:${REDIS_VERSION}'
+    networks:
+      - default
+    volumes:
+      - './data/redis:/data'
+    environment:
+      TZ: '${TimeZone}'
+    restart: always
   webserver:
     container_name: webserver
     platform: linux/amd64

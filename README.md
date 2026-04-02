@@ -7,8 +7,7 @@ Panduan ini mencakup:
 
 ---
 
-## 0. Membuat user (opsional tapi direkomendasikan)
-
+## 0. Membuat user
 Jika masih menggunakan root, sebaiknya buat user baru:
 
 ```bash

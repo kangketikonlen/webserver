@@ -227,7 +227,7 @@ DOMAIN=localhost
 TimeZone=Asia/Jakarta
 ```
 
-> Isi password sebelum production
+> Pastikan `MYSQL_ROOT_PASSWORD` dan `MYSQL_PASSWORD` terisi!
 
 ---
 

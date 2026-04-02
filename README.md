@@ -193,6 +193,11 @@ Copy file environment:
 cp .env.example .env
 ```
 
+Edit file .env
+```bash
+nano .env
+```
+
 ### Contoh isi `.env`
 
 ```env

@@ -7,6 +7,25 @@ Panduan ini mencakup:
 
 ---
 
+## 0. Membuat user (opsional tapi direkomendasikan)
+
+Jika masih menggunakan root, sebaiknya buat user baru:
+
+```bash
+adduser deploy
+usermod -aG sudo deploy
+```
+
+Login menggunakan user tersebut:
+
+```bash
+su - deploy
+```
+
+> Gunakan user ini untuk menjalankan Docker (lebih aman dan rapi)
+
+---
+
 ## 1. Update sistem
 
 ```bash
@@ -193,11 +212,6 @@ Copy file environment:
 cp .env.example .env
 ```
 
-Edit file .env
-```bash
-nano .env
-```
-
 ### Contoh isi `.env`
 
 ```env
@@ -227,7 +241,7 @@ DOMAIN=localhost
 TimeZone=Asia/Jakarta
 ```
 
-> Pastikan `MYSQL_ROOT_PASSWORD` dan `MYSQL_PASSWORD` terisi!
+> Isi password sebelum production
 
 ---
 
